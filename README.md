@@ -8,8 +8,8 @@
 ## Getting started
 
 ```sh
-npm install react-native-app-auth --save
-react-native link react-native-app-auth
+npm install vladikoff/fxa-react-native-app-auth --save
+react-native link fxa-react-native-app-auth
 ```
 
 To setup the Android project, you need to perform two steps:
