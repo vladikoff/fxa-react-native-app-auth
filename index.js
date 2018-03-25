@@ -56,6 +56,29 @@ export const authorize = ({
   return RNAppAuth.authorize(...nativeMethodArguments);
 };
 
+export const fxaAuth = ({ clientId, redirectUrl, scopes }) => {
+  if (!clientId || !redirectUrl || !scopes) {
+    return Promise.reject(new Error('Must specify clientId, redirectUrl and scopes'));
+  }
+  const FXA_OAUTH_SERVER = 'https://oauth-featurebox.dev.lcip.org/v1';
+  const config = {
+    serviceConfiguration: {
+      //authorizationEndpoint: 'https://oauth.accounts.firefox.com/v1/authorization',
+      authorizationEndpoint: `${FXA_OAUTH_SERVER}/authorization`,
+      //tokenEndpoint: 'https://oauth.accounts.firefox.com/v1/token',
+      tokenEndpoint: `${FXA_OAUTH_SERVER}/token`,
+    },
+    additionalParameters: {
+      //keys_jwk: base64JwkPublicKey
+    },
+    clientId,
+    redirectUrl,
+    scopes,
+  };
+
+  return authorize(config);
+};
+
 export const refresh = (
   {
     issuer,
