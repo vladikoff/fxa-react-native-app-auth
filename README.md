@@ -53,7 +53,7 @@ add the following property to the defaultConfig in `android/app/build.gradle`:
 android {
   defaultConfig {
     manifestPlaceholders = [
-      appAuthRedirectScheme: 'fxa.oauth.change.me'
+      appAuthRedirectScheme: 'test-client'
     ]
   }
 }
@@ -69,7 +69,7 @@ import { fxaAuth } from 'react-native-app-auth';
 // base config
 const config = {
   clientId: '<YOUR_CLIENT_ID>',
-  redirectUrl: '<YOUR_REDIRECT_URL>',
+  redirectUrl: 'test-client://redirect',
   scopes: '<YOUR_SCOPES_ARRAY>'
 };
 
